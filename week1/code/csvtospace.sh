@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-
-if [ -z "$*" ]; then echo "Please give an argument!!"; exit 
-fi 
+if [ -z "$*" ];
+then echo "Please give an argument!!"; exit 
+fi # fi ends an if statement in bash
 
 echo "changing csv file into txt file"
 
