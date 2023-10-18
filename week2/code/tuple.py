@@ -1,6 +1,8 @@
-#!/usr/bin/env python3
+
 
 """answer to this practical."""
+
+import sys
 
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
@@ -17,6 +19,5 @@ birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
 
 for i in birds:
     print("Common Name =", i[1], ", Latin Name =", i[0], ", Mean Body Mass =", i[2])
-
 
 

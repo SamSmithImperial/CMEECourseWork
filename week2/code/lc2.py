@@ -1,3 +1,10 @@
+
+
+"""UK Rainfall loops task""" # these triple quotation marks indicate a docstring which are part of the running code but are just used to describe the programme
+
+
+
+
 # Average UK Rainfall (mm) for 1910 by month
 # http://www.metoffice.gov.uk/climate/uk/datasets
 
@@ -50,8 +57,9 @@ print(MonthsLessThan50mmLC)
 MonthsMoreThan100mm = []
 
 for months in rainfall:
+    """a for loop to add all the months with more than 100mm of rainfall to a list"""
     if months[1] > 100:
-    MonthsMoreThan100mm.append(months[0])
+        MonthsMoreThan100mm.append(months[0])
 
 print(MonthsMoreThan100mm)
 
@@ -63,6 +71,5 @@ for months in rainfall:
         MonthsLessThan50mm.append(months[0])
 
 print(MonthsLessThan50mm)
-
 
 
