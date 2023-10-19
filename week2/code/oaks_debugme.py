@@ -12,6 +12,9 @@ def is_an_oak(TreeName):
     >>> is_an_oak('Fagus sylvtica')
     False
 
+    >>> is_an_oak('Quercuss sylvatica')
+    False
+
     """
     words = TreeName.split()
 

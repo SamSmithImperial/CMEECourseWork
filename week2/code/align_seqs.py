@@ -99,11 +99,12 @@ for i in range(l1): # Note that you just take the last alignment with the highes
 
 # print("Best score:", my_best_score)
 
-
-print("The best alignment score possible between these two sequences is", my_best_score)
-print("The two sequences best match position is:")
-print(my_best_align)
-print(s1)
+def main(argv):
+    print("The best alignment score possible between these two sequences is", my_best_score)
+    print("The two sequences best match position is:")
+    print(my_best_align)
+    print(s1)
+    return 0
 
 
 with open('../results/DNA_results.txt', 'w') as DNA_results:
@@ -116,7 +117,7 @@ with open('../results/DNA_results.txt', 'w') as DNA_results:
     DNA_results.write("\n")
     DNA_results.write(seqe1)
 
-sys.exit("I am exiting right now!")
+# sys.exit("I am exiting right now!")
 
 if __name__ == "__main__": 
     """Makes sure the "main" function is called from command line"""  

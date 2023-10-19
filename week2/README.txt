@@ -6,6 +6,7 @@ The week2 practicals include:
     lc2.py
     tuple.py
     dictionary.py
+    cfexercises1
     align_seqs.py
     oaks_debugme.py
 

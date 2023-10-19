@@ -1,12 +1,4 @@
-
-
 """Creating bird lists using for loops and list comprehensions""" # these triple quotation marks indicate a docstring which are part of the running code but are just used to describe the programme
-
-__appname__ = '[application name here]'
-__author__ = 'Your Name (your@email.address)'
-
-# imports
-import sys
 
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
