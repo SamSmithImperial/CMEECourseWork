@@ -3,7 +3,7 @@ import sys
 import doctest
 
 #Define function
-def is_an_oak(name):
+def is_an_oak(TreeName):
     """ Returns True if name is starts with 'quercus' 
 
     >>> is_an_oak('Quercus sylvatica')
@@ -13,7 +13,13 @@ def is_an_oak(name):
     False
 
     """
-    return name.lower().startswith('quercus')
+    words = TreeName.split()
+
+    if len(words) > 0 and len(words[0]) == 7:
+        
+        return words[0].lower().startswith('quercus')
+    
+    return False
 
 def main(argv): 
     f = open('../data/TestOaksData.csv','r')
@@ -31,6 +37,7 @@ def main(argv):
 
     return 0
     
+
 # print(is_an_oak('Quercus sylvatica'))
 
 
