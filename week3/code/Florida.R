@@ -11,6 +11,7 @@ PermSamples <- cbind(ats$Year, PermSamples)
 
 # Calculate correlations
 CorrelationCoefficients <- cor(PermSamples[, 1], PermSamples[, 2:(Perm + 1)])
+print(range(CorrelationCoefficients))
 
 # Plot the histogram
 hist(CorrelationCoefficients, xlim = c(-0.4, 0.6))
