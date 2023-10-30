@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1698309180 "/home/samsmith/Documents/CMEECourseWork/week3/code/FloridaTempWriteup.tex" "FloridaTempWriteup.pdf" "FloridaTempWriteup" 1698309180
-  "../images//Hist.png" 1698308996 16863 8d1f74c62d8967ecaf50de56808da8de ""
+["pdflatex"] 1698490391 "/home/samsmith/Documents/CMEECourseWork/week3/code/FloridaTempWriteup.tex" "FloridaTempWriteup.pdf" "FloridaTempWriteup" 1698490391
+  "../images//Hist.png" 1698490391 15621 e48f01d93e730bbfe01ec7b6439ee2d2 ""
   "/etc/texmf/web2c/texmf.cnf" 1696497252 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/samsmith/Documents/CMEECourseWork/week3/code/FloridaTempWriteup.tex" 1698309179 1514 40a7b937731e3f201eb39e449ee18434 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -37,7 +37,7 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1696497263 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1696497276 2799670 de085f830f332b3bae1c8d777508d2aa ""
-  "FloridaTempWriteup.aux" 1698309180 132 becad25d16353fbd81e5644d2e8bca32 "pdflatex"
+  "FloridaTempWriteup.aux" 1698490391 132 becad25d16353fbd81e5644d2e8bca32 "pdflatex"
   "FloridaTempWriteup.tex" 1698309179 1514 40a7b937731e3f201eb39e449ee18434 ""
   (generated)
   "FloridaTempWriteup.aux"
