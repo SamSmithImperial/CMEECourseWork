@@ -1,0 +1,8 @@
+# Ignore anything
+*.log
+*.fls
+*.fbd_latexmk
+*.tex
+*.synctex
+*.aux
+

@@ -30,6 +30,7 @@ library(tidyr)
 
 MyWrangledData <- TempData %>%
   pivot_longer( # pivot longer is a newer function than gather(), they both do the same thing!
+    
     cols = -c(Cultivation, Block, Plot, Quadrat),
     names_to = "Species",
     values_to = "Count"

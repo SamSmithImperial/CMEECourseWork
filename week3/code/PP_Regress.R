@@ -23,19 +23,19 @@ getRegressionRes = function(x) {
   int = mod$coef[[1]]
   coef = mod$coef[[2]]
   rsq = summary(mod)$r.squared[[1]]
-  Fstat = summary(mod)$fstatistic[[1]]
+  #Fstat = summary(mod)$fstatistic[[1]]
+  Fstat = ifelse(nrow(summary(mod)$coef)>1, summary(mod)$coef[[1]], NA)
   pvalue = ifelse(nrow(summary(mod)$coef) > 1, summary(mod)$coef[2,4], NA)
   
   type = Type.of.feeding.interaction = x$Type.of.feeding.interaction[[1]]
   life = Predator.lifestage = x$Predator.lifestage[[1]]
   
   out = data.frame(feedingType = type, lifestage = life, intercept = int, slope = coef, 
-                   rsq = rsq, F_stat = Fstat, p_value = pvalue)
+                   rsq = rsq, F_stat = Fstat,
+                   p_value = pvalue)
   return(out)
                                             
 }
-
-unique(Data$Predator.lifestage[Data$Type.of.feeding.interaction == 'insectivorous'])
 
 Data2 <- group_split(Data, Type.of.feeding.interaction, Predator.lifestage)
 MyResults = bind_rows(lapply(Data2, getRegressionRes))
