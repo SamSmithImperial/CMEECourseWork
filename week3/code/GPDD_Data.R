@@ -2,6 +2,8 @@ library(maps)
 library(ggplot2)
 load("../data/GPDDFiltered.RData")
 
+world_map <- map_data("world")
+
 ggplot() + geom_map(data = world_map, map = world_map, aes(map_id = region), fill = "lightblue", color = "darkblue")+
   geom_point(data = gpdd, aes(long, lat), color = 'black') + theme_light()+
   xlab("Longitude")+
