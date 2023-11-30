@@ -17,6 +17,3 @@ data1 = data.drop(data.columns[1], axis=1, index= None)
 
 # write to csv and remove index colomn with equals false
 data1.to_csv("../data/WrangledData.csv", index = False)
-
-
-
