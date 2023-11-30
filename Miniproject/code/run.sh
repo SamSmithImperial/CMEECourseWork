@@ -18,7 +18,5 @@ pdflatex Write_up.tex
 
 rm -f *.aux *.log *.out 
 rm -f *.fls
-rm -f * .synctex.gz
-rm - 
 
 echo "Script execution complete. Please find Write_up.pdf in the code directory"
