@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[12pt]{article}
 \usepackage{graphicx} % Required for inserting images
 \graphicspath{{../results}}
 \usepackage{csvsimple}
@@ -9,6 +9,7 @@
 \usepackage{amsmath}
 \usepackage{verbatim}
 \usepackage{textcomp}
+\usepackage{float}
 
 
 \newcommand\wordcount{\input{WordCount.sum}}
@@ -87,7 +88,7 @@ Firstly the pandas package in python 3.10.12 \cite{10.5555/1593511} was used for
 \section{Results}
 All 202 growth curves with fitted models were plotted with both log transformed and linear population values. Subset 225 is a good example for illustrating the differences between plot types:
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \begin{subfigure}{0.5\textwidth}
       \includegraphics[width=\linewidth]{LinearMod.png}
@@ -104,7 +105,7 @@ In both plots it is clear that the Gompertz and Cubic models were best fit to th
 
 The number of times each model performed best for a given criteria is shown in this table below: 
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \csvreader[
     head to column names,
