@@ -44,6 +44,7 @@ get_BIC<- function(x,df,resids) {
 ### FIT ALL LOGISTIC MODELS ###
 ###############################
 set.seed(105)
+print("Fitting Logistic Models")
 num_iterations <- 100
 Logi_func = function(x) {
   for (i in 1:num_iterations) {
@@ -102,11 +103,12 @@ Logi_func = function(x) {
   return(final_result_logi)
 }
 fixthis_Logi = possibly(.f = Logi_func, quiet = TRUE)
-MyResLogi <- bind_rows(lapply(Data2, fixthis_Logi))
-
+x <- system.time(MyResLogi <- bind_rows(lapply(Data2, fixthis_Logi)))[1]
+print(paste0("Logistic model fitting time in seconds: ", round(x,4)))
 ###############################
 ### FIT ALL GOMPERTZ MODELS ###
 ###############################
+print("Fitting Gompertz Models")
 set.seed(105)
 Gomp_func = function(x) {
   for (i in 1:num_iterations){
@@ -164,12 +166,13 @@ Gomp_func = function(x) {
 }
 
 fixthis_Gomp = possibly(.f = Gomp_func, quiet = TRUE)
-MyResGomp <- bind_rows(lapply(Data2, fixthis_Gomp))
+xy <- system.time(MyResGomp <- bind_rows(lapply(Data2, fixthis_Gomp)))[1]
+print(paste0("Gompertz model fitting time in seconds: ", round(xy,4)))
 
 ############################
 ### FIT ALL CUBIC MODELS ###
 ############################
-
+print("Fitting Cubic Models")
 Cubic_func = function(x){
   df <- x
   model <- lm(log(PopBio) ~ poly(Time,3), data = df)
@@ -188,8 +191,9 @@ Cubic_func = function(x){
 }
 
 fixthis_Cubic = possibly(.f = Cubic_func, quiet = TRUE)
-MyResCubic<- bind_rows(lapply(Data2, fixthis_Cubic))
+xyz <- system.time(MyResCubic<- bind_rows(lapply(Data2, fixthis_Cubic)))[1]
 
+print(paste0("Cubic Model fitting time in seconds: ", round(xyz,4)))
 
 ################################
 ### MAKE STATISTIC DATA SETS ###

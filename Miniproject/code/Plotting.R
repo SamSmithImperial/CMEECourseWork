@@ -24,6 +24,7 @@ data2 <- group_split(data, Temperature)
 ###############################
 ### PLOT EVERY SINGLE GRAPH ###
 ###############################
+print("Plotting every single curve")
 graph_func = function(x,sdf){
   df <- x
   data_id <- unique(df$ID)
@@ -65,12 +66,13 @@ graph_func = function(x,sdf){
     scale_color_manual(values = c("Cubic Fit" = "blue", "Gompertz Fit" = "red", "Logistic Fit" = "green")) +
     theme_minimal()+theme(aspect.ratio = 1)
   
-  ggsave(paste0("../plots", "/plot", data_id, ".pdf"),p)
+  suppressMessages(ggsave(paste0("../plots", "/plot", data_id, ".pdf"),p)) # suppressmessages speeds it up as prevents printing to console
   
 }
 
 fixthis_graph_func = possibly(.f = graph_func, quiet = TRUE)
-lapply(Data2, function(df) fixthis_graph_func(df, data))
+x <- system.time(lapply(Data2, function(df) fixthis_graph_func(df, data)))[1]
+print(paste0("Plotting Graphs completed in ", round(x,4), " seconds"))
 
 ###############################################
 ### PLOT SAME CURVE IN LOG AND LINEAR SPACE ###
@@ -225,32 +227,6 @@ ggplot(data = AIC_winner_temp, aes(x = Temperature)) +
         legend.background = element_rect(fill = "white", colour = "white"))
 graphics.off()
 
-################################
-### PLOT RMAX VS TEMPERATURE ###
-################################
-datadataCFU <- subset(data, Units == "CFU")
-
-modelly1 <- lm(Akaike_r_max ~ poly(Temperature, 2), data = datadataCFU)
-modell2 <- lm(Gompertz_r_max ~ poly(Temperature, 2), data = datadataCFU)
-
-temp_points <- seq(0, 40, 0.1)
-predPointsCFU <- data.frame(Temperature = temp_points, 
-                         Akaike_r_max = predict(modelly1, data.frame(Temperature = temp_points)))
-predpointscfugomp <- data.frame(Temperature = temp_points, 
-                                Akaike_r_max = predict(modell2, data.frame(Temperature = temp_points)))
-
-pdf("../results/rmaxvstemp.pdf")
-ggplot() +
-  geom_jitter(data = datadataCFU, aes(x = Temperature, y = Akaike_r_max), color = "blue", width = 0.3, size =2, alpha = 0.7) +
-  geom_line(data = predPointsCFU, aes(x = Temperature, y = Akaike_r_max), color = "blue", size = 1.3) +
-  geom_jitter(data = datadataCFU, aes(x = Temperature, y = Gompertz_r_max), color = "red", size = 1.3)+
-  geom_line(data = predpointscfugomp, aes(x = Temperature, y = Akaike_r_max), color = "red", size = 1.3) +
-  
-  labs(title = "Rmax vs Temperature",
-       x = "Temperature",
-       y = "Maximum Growth Rate") +
-  theme_minimal()+ylim(0,1)+theme(aspect.ratio = 0.9)
-graphics.off()
 #############################
 ### TABLE FOR BEST MODELS ###
 #############################

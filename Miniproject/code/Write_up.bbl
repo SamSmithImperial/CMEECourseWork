@@ -1,0 +1,141 @@
+\begin{thebibliography}{}
+
+\bibitem[BUC, 1997]{BUCHANAN1997313}
+ (1997).
+\newblock When is simple good enough: a comparison of the gompertz, baranyi,
+  and three-phase linear models for fitting bacterial growth curves.
+\newblock {\em Food Microbiology}, 14(4):313--326.
+
+\bibitem[Nat, 2016]{NatRevMicro}
+ (2016).
+\newblock {\em Nature Reviews Microbiology}, 14(9):543–543.
+
+\bibitem[Aba et~al., 2021]{ABA2021109108}
+Aba, R. P.~M., Gelido, E. M.~L., Yatco, K. M. R.~S., and Gabriel, A.~A. (2021).
+\newblock Microbial shelf life of coconut water subjected to various
+  inoculation levels of listeria monocytogenes and storage conditions.
+\newblock {\em International Journal of Food Microbiology}, 344:109108.
+
+\bibitem[Coelho et~al., 2019]{Coelho2019}
+Coelho, M. T.~P., Diniz‐Filho, J.~A., and Rangel, T.~F. (2019).
+\newblock A parsimonious view of the parsimony principle in ecology and
+  evolution.
+\newblock {\em Ecography}, 42(5):968–976.
+
+\bibitem[Dash et~al., 2023]{DASH2023103140}
+Dash, G., Sen, S., Pradhan, R.~K., Ghosh, S., and Jose, J. (2023).
+\newblock Application of information theory-based decision support system for
+  high precision modeling of the length-weight relationship (lwr) for five
+  marine shrimps from the northwestern bay of bengal.
+\newblock {\em Regional Studies in Marine Science}, 66:103140.
+
+\bibitem[Dey et~al., 2020]{Dey2020}
+Dey, A., Bokka, V., and Sen, S. (2020).
+\newblock Dependence of bacterial growth rate on dynamic temperature changes.
+\newblock {\em IET Systems Biology}, 14(2):68–74.
+
+\bibitem[Freckleton, 2002]{Freckleton2002}
+Freckleton, R.~P. (2002).
+\newblock On the misuse of residuals in ecology: regression of residuals vs.
+  multiple regression.
+\newblock {\em Journal of Animal Ecology}, 71(3):542–545.
+
+\bibitem[Garcia et~al., 2021]{Garcia2021}
+Garcia, B., Rodriguez, E., Salazar, Y., Valle, P., Flores-Gallegos, A.,
+  Rutiaga-Quiñones, O., and Rodriguez-Herrera, R. (2021).
+\newblock Primary model for biomass growth prediction in batch fermentation.
+\newblock {\em Symmetry}, 13(8):1468.
+
+\bibitem[Gupta et~al., 2016]{Gupta2016}
+Gupta, A., Gupta, R., and Singh, R.~L. (2016).
+\newblock {\em Microbes and Environment}, page 43–84.
+\newblock Springer Singapore.
+
+\bibitem[Johnson and Omland, 2004]{JOHNSON2004101}
+Johnson, J.~B. and Omland, K.~S. (2004).
+\newblock Model selection in ecology and evolution.
+\newblock {\em Trends in Ecology & Evolution}, 19(2):101--108.
+
+\bibitem[Kim and Kim, 2017]{KIM201764}
+Kim, J. and Kim, K.~H. (2017).
+\newblock Effects of minimal media vs. complex media on the metabolite profiles
+  of escherichia coli and saccharomyces cerevisiae.
+\newblock {\em Process Biochemistry}, 57:64--71.
+
+\bibitem[Nedwell and Rutter, 1994]{Nedwell1994}
+Nedwell, D.~B. and Rutter, M. (1994).
+\newblock Influence of temperature on growth rate and competition between two
+  psychrotolerant antarctic bacteria: low temperature diminishes affinity for
+  substrate uptake.
+\newblock {\em Applied and Environmental Microbiology}, 60(6):1984–1992.
+
+\bibitem[Pearl and Reed, 1920]{Pearl1920}
+Pearl, R. and Reed, L.~J. (1920).
+\newblock On the rate of growth of the population of the united states since
+  1790 and its mathematical representation.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  6(6):275–288.
+
+\bibitem[Peleg and Corradini, 2011]{doi:10.1080/10408398.2011.570463}
+Peleg, M. and Corradini, M.~G. (2011).
+\newblock Microbial growth curves: What the models tell us and what they
+  cannot.
+\newblock {\em Critical Reviews in Food Science and Nutrition},
+  51(10):917--945.
+
+\bibitem[Pla et~al., 2015]{Pla2015}
+Pla, M.-L., Oltra, S., Esteban, M.-D., Andreu, S., and Palop, A. (2015).
+\newblock Comparison of primary models to predict microbial growth by the plate
+  count and absorbance methods.
+\newblock {\em BioMed Research International}, 2015:1–14.
+
+\bibitem[{R Core Team}, 2021]{R}
+{R Core Team} (2021).
+\newblock {\em R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria.
+
+\bibitem[Rolfe et~al., 2012]{Rolfe2012}
+Rolfe, M.~D., Rice, C.~J., Lucchini, S., Pin, C., Thompson, A., Cameron, A.
+  D.~S., Alston, M., Stringer, M.~F., Betts, R.~P., Baranyi, J., Peck, M.~W.,
+  and Hinton, J. C.~D. (2012).
+\newblock Lag phase is a distinct growth phase that prepares bacteria for
+  exponential growth and involves transient metal accumulation.
+\newblock {\em Journal of Bacteriology}, 194(3):686–701.
+
+\bibitem[Shoemaker et~al., 2021]{Shoemaker2021}
+Shoemaker, W.~R., Jones, S.~E., Muscarella, M.~E., Behringer, M.~G., Lehmkuhl,
+  B.~K., and Lennon, J.~T. (2021).
+\newblock Microbial population dynamics and evolutionary outcomes under extreme
+  energy limitation.
+\newblock {\em Proceedings of the National Academy of Sciences}, 118(33).
+
+\bibitem[Tjørve and Tjørve, 2017]{Tjrve2017}
+Tjørve, K. M.~C. and Tjørve, E. (2017).
+\newblock The use of gompertz models in growth analyses, and new gompertz-model
+  approach: An addition to the unified-richards family.
+\newblock {\em PLOS ONE}, 12(6):e0178691.
+
+\bibitem[Van~Rossum and Drake, 2009]{10.5555/1593511}
+Van~Rossum, G. and Drake, F.~L. (2009).
+\newblock {\em Python 3 Reference Manual}.
+\newblock CreateSpace, Scotts Valley, CA.
+
+\bibitem[Wachenheim et~al., 2003]{WACHENHEIM2003157}
+Wachenheim, D.~E., Patterson, J.~A., and Ladisch, M.~R. (2003).
+\newblock Analysis of the logistic function model: derivation and applications
+  specific to batch cultured microorganisms.
+\newblock {\em Bioresource Technology}, 86(2):157--164.
+
+\bibitem[Ward and Cockson, 1972]{Ward1972}
+Ward, J. and Cockson, A. (1972).
+\newblock Studies on a thermophilic bacillus: Its isolation, properties, and
+  temperature coefficient of growth.
+\newblock {\em Journal of Bacteriology}, 112(3):1040–1042.
+
+\bibitem[Zwietering et~al., 1990]{Zwietering1990}
+Zwietering, M.~H., Jongenburger, I., Rombouts, F.~M., and van~’t Riet, K.
+  (1990).
+\newblock Modeling of the bacterial growth curve.
+\newblock {\em Applied and Environmental Microbiology}, 56(6):1875–1881.
+
+\end{thebibliography}
