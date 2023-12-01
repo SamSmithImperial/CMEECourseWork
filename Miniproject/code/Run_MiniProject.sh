@@ -14,9 +14,14 @@ Rscript Plotting.R
 
 # Compile LaTeX document
 echo "Compiling Write_up.tex..."
+texcount -1 -sum Write_up.tex > WordCount.sum
+
+pdflatex -shell-escape Write_up.tex
+bibtex Write_up
+pdflatex Write_up.tex
 pdflatex Write_up.tex
 
-rm -f *.aux *.log *.out 
-rm -f *.fls
+
+rm -f *.aux *.log *.out *.fls *.sum *.bbl *.blg 
 
 echo "Script execution complete. Please find Write_up.pdf in the code directory"
