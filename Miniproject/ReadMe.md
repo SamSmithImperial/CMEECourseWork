@@ -8,18 +8,31 @@ This study implicated model selection methods to identify a trend between model 
 The project directory is structured as follows within the MiniProject directory:
 
 ├── code
+
 │   ├── **Bibliography.bib** - contains bibliography compiled at the end of the report
+
 │   ├── **DataWrangling.py** - Python script for initial data wrangling and inspection
+
 │   ├── **Fitting_Models.R** - R script for NLLS fitting
+
 │   ├── **Plotting.R** - R script for results anlaysis and plotting
+
 │   ├── **Run_MiniProject.sh** - bash script that executes the python and R script and compiles the write up
+
 │   └── **Write_up.tex** - write up in LaTeX format
+
 ├── data - this subdirectory will be additionally populated with a csv containing the model performance results
+
 │   ├── **LogisticGrowthData.csv** - Original data set
-│   └── **LogisticGrowthMetaData.csv** - Meta data set containing information behind 
+
+│   └── **LogisticGrowthMetaData.csv** - Meta data set containing information explaining the main dataset
+
 ├── plots - this subdirectory will be populated with plots illustrating every single subset.
+
 ├── results - this subdirectory will be populated with the plots that appear in the final write-up.
-└── sandbox - this subdirectory contained code that was not ultimately used for the report.
+
+├── sandbox - this subdirectory contained code that was not ultimately used for the report.
+
 ├── ReadMe.md
 
 ### Instructions
