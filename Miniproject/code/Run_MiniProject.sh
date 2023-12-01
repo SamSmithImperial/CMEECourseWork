@@ -1,5 +1,5 @@
 #!/bin/bash
-# To run this script write './run.sh' in the terminal
+
 # Run Python script
 echo "Running DataWrangling.py..."
 python3 DataWrangling.py

@@ -1,7 +1,7 @@
 # import packages
 library(ggplot2)
-library(dplyr)
 library(purrr)
+library(dplyr)
 
 # Logistic Model Formula
 logistic_model <- function(t, r_max, K, N_0){ # The classic logistic equation
