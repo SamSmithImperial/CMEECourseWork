@@ -1,5 +1,5 @@
 # **CMEE Mini Project ReadMe**
-## There is No Observable Trend Between Temperature and Model Performance when Predicting Microbial Population Growth
+## Temperature Does Not Affect Model Performance when Predicting Microbial Population Growth
 
 ### Description
 
@@ -39,7 +39,7 @@ The project directory is structured as follows within the MiniProject directory:
 
 1. First ensure package and language dependancies are up to date and installed.
 2. Change to the MiniProject/code directory and find Run_MiniProject.sh.
-3. Execute bash Run_MiniProject.sh in the terminal.
+3. Execute **bash Run_MiniProject.sh** in the terminal.
 
 ### Programming Language Requirements
 * Python 3.10.12
@@ -63,13 +63,11 @@ The project directory is structured as follows within the MiniProject directory:
 *NB: all package versions and citations were generated using the base R functions packageVersion() and citation() respectively.*
 #### References 
 
-Timur V. Elzhov, Katharine M. Mullen, Andrej-Nikolai Spiess and Ben Bolker (2023).minpack.lm: R Interface to the Levenberg-Marquardt Nonlinear Least-Squares Algorithm Found in MINPACK, Plus Support for Bounds. R package version 1.2-4.
-  https://CRAN.R-project.org/package=minpack.lm
+Timur V. Elzhov, Katharine M. Mullen, Andrej-Nikolai Spiess and Ben Bolker (2023).minpack.lm: R Interface to the Levenberg-Marquardt Nonlinear Least-Squares Algorithm Found in MINPACK, Plus Support for Bounds. R package version 1.2-4. https://CRAN.R-project.org/package=minpack.lm
 
 H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
 
 Hadley Wickham, Romain François, Lionel Henry, Kirill Müller and Davis Vaughan (2023). dplyr: A Grammar of Data Manipulation. R package version 1.1.3. https://CRAN.R-project.org/package=dplyr
 
-Hadley Wickham and Lionel Henry (2023). purrr: Functional Programming Tools. R package version 1.0.2.
-  https://CRAN.R-project.org/package=purrr
+Hadley Wickham and Lionel Henry (2023). purrr: Functional Programming Tools. R package version 1.0.2. https://CRAN.R-project.org/package=purrr
 

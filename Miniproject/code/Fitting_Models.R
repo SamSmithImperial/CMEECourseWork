@@ -186,7 +186,8 @@ Cubic_func = function(x){
                        Cubic_AICc = get_AICc(model, df, SS_Residuals),
                        Cubic_Rsqrd = R_Squared,
                        Temperature = unique(df$Temp),
-                       Cubic_BIC = get_BIC(model,df, SS_Residuals))
+                       Cubic_BIC = get_BIC(model,df, SS_Residuals),
+                       Species = unique(df$Species))
   return(result)
 }
 
@@ -282,8 +283,8 @@ Stats_data$Akaike2sum <- Stats_data$Logi_Akaike2+Stats_data$Gomp_Akaike2
 ### CALCULATE PARAMETER ESTIMATES USING AKAIKE WEIGHTS ###
 ##########################################################
 
-Stats_data$Akaike_r_max <- (Stats_data$Gompertz_r_max*Stats_data$Gomp_Akaike2)+(Stats_data$Logistic_r_max*Stats_data$Logi_Akaike2)
-Stats_data$Akaike_K <- (Stats_data$Gompertz_K*Stats_data$Gomp_Akaike2)+(Stats_data$Logistic_K*Stats_data$Logi_Akaike2)
+Stats_data$Rmax <- round((Stats_data$Gompertz_r_max*Stats_data$Gomp_Akaike2)+(Stats_data$Logistic_r_max*Stats_data$Logi_Akaike2),2)
+Stats_data$K <- round((Stats_data$Gompertz_K*Stats_data$Gomp_Akaike2)+(Stats_data$Logistic_K*Stats_data$Logi_Akaike2),2)
 
 #####################################
 ### EXPORT STATS DATAFRAME TO CSV ###

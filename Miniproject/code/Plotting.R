@@ -184,6 +184,9 @@ ggplot(data = df, aes(x = Time, y = log(PopBio))) +
   )
 
 graphics.off()
+df <- subset(df, select = c(-Citation,-PopBio_units,-Time_units, -Rep, -ID))
+write.csv(df, "../results/Figure1Data.csv", row.names = FALSE, quote = FALSE)
+
 
 #############################################################################################
 ### DATA FRAME SHOWING WHICH MODELS PERFORM BEST AT DIFFERENT TEMPERATRURES PER CRITERION ###
@@ -195,11 +198,13 @@ AIC_winner_temp <- bind_rows(lapply(data2, function(data) {
     Logistic = sum(data$AIC_Winner == "Logistic"),
     Gompertz = sum(data$AIC_Winner == "Gompertz"),
     Cubic = sum(data$AIC_Winner == "Cubic"),
-    Logistic_proportion = sum(data$AIC_Winner == "Logistic")/(sum(data$AIC_Winner == "Logistic")+sum(data$AIC_Winner == "Gompertz")+sum(data$AIC_Winner == "Cubic")),
-    Gompertz_proportion = sum(data$AIC_Winner == "Gompertz")/(sum(data$AIC_Winner == "Logistic")+sum(data$AIC_Winner == "Gompertz")+sum(data$AIC_Winner == "Cubic")),
-    Cubic_proportion = sum(data$AIC_Winner == "Cubic")/(sum(data$AIC_Winner == "Logistic")+sum(data$AIC_Winner == "Gompertz")+sum(data$AIC_Winner == "Cubic"))
+    LogisticProp = round(sum(data$AIC_Winner == "Logistic")/(sum(data$AIC_Winner == "Logistic")+sum(data$AIC_Winner == "Gompertz")+sum(data$AIC_Winner == "Cubic")),3),
+    GompertzProp = round(sum(data$AIC_Winner == "Gompertz")/(sum(data$AIC_Winner == "Logistic")+sum(data$AIC_Winner == "Gompertz")+sum(data$AIC_Winner == "Cubic")),3),
+    CubicProp= round(sum(data$AIC_Winner == "Cubic")/(sum(data$AIC_Winner == "Logistic")+sum(data$AIC_Winner == "Gompertz")+sum(data$AIC_Winner == "Cubic")),3)
   )
 }))
+
+write.csv(AIC_winner_temp, "../results/AICtemp.csv", row.names = FALSE, quote = FALSE)
 
 ######################################################################
 ### PLOT PERFORMANCE OF EACH MODEL THROUGH ALL UNIQUE TEMPERATURES ###
@@ -207,9 +212,9 @@ AIC_winner_temp <- bind_rows(lapply(data2, function(data) {
 
 png("../results/proportionplot.png", height = 2000, width = 4000, res = 500)
 ggplot(data = AIC_winner_temp, aes(x = Temperature)) +
-  geom_line(aes(y = Logistic_proportion, color = "Logistic"), size = 1.2) +
-  geom_line(aes(y = Gompertz_proportion, color = "Gompertz"), size = 1.2) +
-  geom_line(aes(y = Cubic_proportion, color = "Cubic"), size = 1.2) +
+  geom_line(aes(y = LogisticProp, color = "Logistic"), size = 1.2) +
+  geom_line(aes(y = GompertzProp, color = "Gompertz"), size = 1.2) +
+  geom_line(aes(y = CubicProp, color = "Cubic"), size = 1.2) +
   labs(title = "Proportion of AIC Winners by Temperature",
        x = "Temperature",
        y = "Proportion of Best Fits",
@@ -247,8 +252,7 @@ Gompertz_bestfits <- data.frame(AICc = sum(data$AIC_Winner == "Gompertz"),
                                 AkaikeW = sum(data$Akaike_Winner == "Gompertz"))
 
 # Combine data frames into one
-sammt <- rbind(c("Model", "AICc", "BIC", "Rsqrd", "AkaikeW"),
-               c("Logistic", Logistic_bestfits$AICc, Logistic_bestfits$BIC, Logistic_bestfits$Rsqrd, Logistic_bestfits$AkaikeW),c("Cubic", Cubic_bestfits$AICc, Cubic_bestfits$BIC, Cubic_bestfits$Rsqrd, Cubic_bestfits$AkaikeW), c("Gompertz", Gompertz_bestfits$AICc, Gompertz_bestfits$BIC, Gompertz_bestfits$Rsqrd, Gompertz_bestfits$AkaikeW))
+sammt <- rbind(c("Model", "AICc", "BIC", "R^2", "AkaikeW"), c("Logistic", Logistic_bestfits$AICc, Logistic_bestfits$BIC, Logistic_bestfits$Rsqrd, Logistic_bestfits$AkaikeW),c("Cubic", Cubic_bestfits$AICc, Cubic_bestfits$BIC, Cubic_bestfits$Rsqrd, Cubic_bestfits$AkaikeW), c("Gompertz", Gompertz_bestfits$AICc, Gompertz_bestfits$BIC, Gompertz_bestfits$Rsqrd, Gompertz_bestfits$AkaikeW))
 
 sammy <- as.data.frame(sammt)
 rownames(sammy) <- NULL
@@ -259,4 +263,23 @@ colnames(sammy) <- NULL
 write.csv(sammy,"../results/bestmodeltable.csv", row.names = FALSE, quote = FALSE)
 
 
+#################################################
+### CSV CONTAINING ROBUST PARAMETER ESTIMATES ###
+#################################################
+
+# Assuming 'data' is your original data frame
+paramdf <- subset(data, select = c(Species, Temperature, Rmax, K))
+paramdf$Species <- sub("^(.*?)\\..*$", "\\1", paramdf$Species)
+
+# Create a factor to split the data into four groups
+paramdf$Group <- as.factor(cut(seq_along(paramdf$Species), breaks = 5, labels = FALSE))
+
+# Split the data frame into four groups
+split_data <- split(paramdf, paramdf$Group)
+
+# Write each subset to a separate CSV file
+for (i in seq_along(split_data)) {
+  filename <- paste0("../results/paramdf_", i, ".csv")
+  write.csv(split_data[[i]], filename, row.names = FALSE, quote = FALSE)
+}
 
