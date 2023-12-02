@@ -64,20 +64,7 @@ graph_func = function(x,sdf){
     ) +
     
     scale_color_manual(values = c("Cubic Fit" = "blue", "Gompertz Fit" = "red", "Logistic Fit" = "green")) +
-    theme_minimal()+theme(
-      legend.position = c(0.3,0.75),
-      text = element_text(family = "Times New Roman"),  # Adjust font family and size
-      plot.title = element_text(face = "bold", size = 21),
-      plot.subtitle = element_text(size = 15),# Main title font size
-      axis.title.x = element_text(size = 21),  # X-axis title font size
-      axis.title.y = element_text(size = 21),  # Y-axis title font size
-      axis.text = element_text(size = 17),  # Axis text font size
-      legend.title = element_text(size = 18),  # Legend title font size
-      legend.text = element_text(size = 19),
-      aspect.ratio = 1,
-      legend.key = element_rect(fill = "white", colour = "white"),
-      legend.background = element_rect(fill = "white", colour = "white")
-    )
+    theme_minimal()
   
   suppressMessages(ggsave(paste0("../plots", "/plot", data_id, ".pdf"),p)) # suppressmessages speeds it up as prevents printing to console
   
@@ -276,14 +263,13 @@ sammy <- as.data.frame(sammt)
 rownames(sammy) <- NULL
 colnames(sammy) <- NULL
 
-
-
 write.csv(sammy,"../results/bestmodeltable.csv", row.names = FALSE, quote = FALSE)
 
 
 #################################################
 ### CSV CONTAINING ROBUST PARAMETER ESTIMATES ###
 #################################################
+# note groups had to be made as pdf files do not permit the tables running onto the next pages
 
 # Assuming 'data' is your original data frame
 paramdf <- subset(data, select = c(Species, Temperature, Rmax, K))

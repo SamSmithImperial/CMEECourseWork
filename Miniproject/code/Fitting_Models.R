@@ -105,6 +105,7 @@ Logi_func = function(x) {
 fixthis_Logi = possibly(.f = Logi_func, quiet = TRUE)
 x <- system.time(MyResLogi <- bind_rows(lapply(Data2, fixthis_Logi)))[1]
 print(paste0("Logistic model fitting time in seconds: ", round(x,4)))
+
 ###############################
 ### FIT ALL GOMPERTZ MODELS ###
 ###############################

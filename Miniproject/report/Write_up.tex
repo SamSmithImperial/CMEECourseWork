@@ -45,9 +45,9 @@ Microorganisms make up the most diverse and plentiful group of life on Earth. Th
      
 Models can be developed that effectively predict microbial populations at a given time point. They work under the assumption that microbial population patterns are reproducible under the same environmental conditions \cite{Pla2015}. Modelling microbial population dynamics has positive implications on agriculture and food security, as predictions on shelf life and product safety can be made \cite{Zwietering1990}. In addition, predictive models assist in the decision making of large industrial processess such as fermentation \cite{Garcia2021}. Models that are derived from existing theory and recorded observations are known as mechanistic; whilst phenomenological models are developed empirically and provide no explanation of patterns \cite{doi:10.1080/10408398.2011.570463}. Two examples of commonly used non-linear mechanistic models are the the Gompertz model and the Logistic model.\\
 
-The Logistic equation is popular for describing bacterial population growth. The logistic model that was first developed by Pearl and Reed in 1920 was emperical. However, biological inferences are now commonly derived from its parameters \cite{WACHENHEIM2003157} \cite{Pearl1920}. Therefore, it can be said that the logistic model estimates the population at any given time point from the initial population ($\mathrm{N}_0$), K and Rmax values \cite{WACHENHEIM2003157}. Whilst models consisting of fewer parameters are often preferred, the logistic equation does lack parameters that captivate other typical stages of microbial growth curves such as a death or lag phase. The Gompertz equation is another sigmoidal model that takes into account the three parameters in the Logistic model but also includes a tlag. The Gompertz model has been widely used across a range of applications such as predicting plant, fish or even cancerous tumour growth \cite{Tjrve2017}. Finally, phenomenological cubic linear models are often used for predicting microbial populations. Garcia et al (2021) found that a cubic model accurately represents all aforementioned stages of bacterial population growth when applied to fermentation bacteria \cite{Garcia2021}. However, biological inferences cannot be drawn from phenomoligcal model parameters, highlighting the importance of mechanistic models that provide parameter estimations, as well as predictions.\\
+The Logistic equation is popular for describing bacterial population growth. The Logistic model that was first developed by Pearl and Reed in 1920 was emperical. However, biological inferences are now commonly derived from its parameters \cite{WACHENHEIM2003157} \cite{Pearl1920}. Therefore, it can be said that the Logistic model estimates the population at any given time point from the initial population ($\mathrm{N}_0$), K and Rmax values \cite{WACHENHEIM2003157}. Whilst models consisting of fewer parameters are often preferred, the Logistic equation does lack parameters that captivate other typical stages of microbial growth curves such as a death or lag phase. The Gompertz equation is another sigmoidal model that takes into account the three parameters in the Logistic model but also includes a tlag. The Gompertz model has been widely used across a range of applications such as predicting plant, fish or even cancerous tumour growth \cite{Tjrve2017}. Finally, phenomenological cubic linear models are often used for predicting microbial populations. Garcia et al (2021) found that a cubic model accurately represents all aforementioned stages of bacterial population growth when applied to fermentation bacteria \cite{Garcia2021}. However, biological inferences cannot be drawn from phenomoligcal model parameters, highlighting the importance of mechanistic models that provide parameter estimations, as well as predictions.\\
 
-Statistical analysis whereby different models are selected or ranked in terms of performance have begun to gain traction in ecology and evolution \cite{JOHNSON2004101}. It offers an alternative to traditional hypothesis testing techniques as it confronts multiple 'competing' hypotheses simultaneously. It is crucial to identify the best performing models under various conditions, as the prediction of microbial population dynamics relies on selecting the best-performing model that aligns with the conditions of unsampled populations. This report aims to identify trends in model performance between cubic, Gompertz and Logistic, under different temperatures. It is expected that the Gompertz model may drop in performance relative to the Logistic model with increasing temperatures. This is due to the tlag being significantly reduced by increasing temperatures \cite{ABA2021109108} as populations can adapt to new conditions faster. Furthermore, I expect no changes in model perfomance for the Cubic model across temperatures as its parameters are not tied to any biological variables that are temperature dependent. Temperature is also known to influence the Rmax \cite{Ward1972} \cite{Dey2020}. Rates of substrate uptake by bacteria reduce with lower temperatures thus negatively impacting a bacteria's ability to grow \cite{Nedwell1994}. However as both mechanistic models contain an Rmax parameter this should not vary relative model performance.\\
+Statistical analysis whereby different models are selected or ranked in terms of performance have begun to gain traction in ecology and evolution \cite{JOHNSON2004101}. It offers an alternative to traditional hypothesis testing techniques as it confronts multiple `competing' hypotheses simultaneously. It is crucial to identify the best performing models under various conditions, as the prediction of microbial population dynamics relies on selecting the best performing model that aligns with the conditions of unsampled populations. This report aims to identify trends in model performance between cubic, Gompertz and Logistic, under different temperatures. It is expected that the Gompertz model may drop in performance relative to the Logistic model with increasing temperatures. This is due to the tlag being significantly reduced by increasing temperatures \cite{ABA2021109108} as populations can adapt to new conditions faster. Furthermore, I expect no changes in model perfomance for the Cubic model across temperatures as its parameters are not tied to any biological variables that are temperature dependent. Temperature is also known to influence the Rmax \cite{Ward1972} \cite{Dey2020}. Rates of substrate uptake by bacteria reduce with lower temperatures thus negatively impacting a bacteria's ability to grow \cite{Nedwell1994}. However as both mechanistic models contain an Rmax parameter this should not vary relative model performance.\\
 
 Finally, the model averaging application of model selection techniques will be carried out in this study. Robust parameter estimates for K and Rmax will be calculated using Akaike weights for demonstration and use in potential follow up studies.
 
@@ -57,7 +57,7 @@ Finally, the model averaging application of model selection techniques will be c
 This study is based on an amalgumation of microbial growth curves from 10 different research papers. It includes populations of different species grown under varying temperatures (0 - 37C) and 18 different media. Observations in the dataset were deemed from the same curve if they shared a temperature, species and citation. This facilitated the subsetting of the data into 285 individual growth curves for model fitting.
 
     \subsection*{Model Fitting}
-Only three canditate models were considered in this study as it is ill-advised to include many models that increase the chance of spurious findings \cite{JOHNSON2004101}. The Logistic model used in this study is the solution to the differential equation defining the classic logistic population growth equation.
+Only three canditate models were considered in this study as it is ill-advised to include many models that increase the chance of spurious findings \cite{JOHNSON2004101}. The Logistic model used in this study is the solution to the differential equation defining the classic Logistic population growth equation.
     \subsubsection{Logistic Model}
     \begin{equation}
         N_t = \frac{N_0Ke^{r_{max}t}}{K+N_0(e^{r_{max}t} - 1)}
@@ -73,7 +73,7 @@ Finally, the equation below illustrates the cubic equation and its uninterpretab
         log(N_t) = at + bt^2 + ct^3 + d
     \end{equation}
 
-Fitting the non linear mechanistic models (Logistic and Gompertz) required reasonable starting values in addition to suitable upper and lower bounds. Sampling was used to vary the starting values around an appropriate mean to increase the likelihood of a non-linear least squares (NLLS) model fit after 100 attempts. After the 100 attempts for each growth curve, only the fit with the highest $\mathrm{R}^2$ value was outputted alongside its respective AICc, BIC, and Akaike weight ($\mathrm{A}_{\textit{W}}$) score. All three models were managed to be fit to 202 out of 285 growth curves. For consistency, when working out the statistical metrics for the logistic model, the residuals were log transformed to facilitate comparison between the other models. In addition, log transformed population data is prefered as population is a multiplicative process therefore residuals naturally increase with time in a linear scale. This will increase the uniformality of the model residuals which leads to consistent predictive power across the range of time values \cite{Freckleton2002}.
+Fitting the non linear mechanistic models (Logistic and Gompertz) required reasonable starting values in addition to suitable upper and lower bounds. Sampling was used to vary the starting values around an appropriate mean to increase the likelihood of a non-linear least squares (NLLS) model fit after 100 attempts. After the 100 attempts for each growth curve, only the fit with the highest $\mathrm{R}^2$ value was outputted alongside its respective AICc, BIC, and Akaike weight ($\mathrm{A}_{\textit{W}}$) score. All three models were managed to be fit to 202 out of 285 growth curves. For consistency, when working out the statistical metrics for the Logistic model, the residuals were log transformed to facilitate comparison between the other models. In addition, log transformed population data is prefered as population is a multiplicative process therefore residuals naturally increase with time in a linear scale. This will increase the uniformality of the model residuals which leads to consistent predictive power across the range of time values \cite{Freckleton2002}.
 
 
     \subsection{Model Comparison and Weighted Averages}
@@ -101,65 +101,9 @@ All 202 growth curves with fitted models were plotted with both log transformed 
     \caption{Graphs showing the relationship between log and linear microbial populations against time for subset 225.}
 \end{figure}
 
-In both plots it is clear that the Gompertz and Cubic models were best fit to the data. This would suggest their $\mathrm{R}^2$ values would be stronger however, as the logistic model contains fewer parameters, AIC and BIC values may tell a different story. Furthermore, both plots illustrate the Logistic models struggle to fit curves with a time lag phase. The Gompertz and Cubic manage to captivate the lag phase, growth phase and stationary phase, with the cubic even predicting a death phase shown by a slight decline in predicted population.\\
+In both plots it is clear that the Gompertz and Cubic models were best fit to the data. This would suggest their $\mathrm{R}^2$ values would be stronger however, as the Logistic model contains fewer parameters, AIC and BIC values may tell a different story. Furthermore, both plots illustrate the Logistic models struggle to fit curves with a time lag phase. The Gompertz and Cubic manage to captivate the lag phase, growth phase and stationary phase, with the cubic even predicting a death phase shown by a slight decline in predicted population.\\
 
 The number of times each model performed best for a given criteria is shown in this table below: 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \begin{table}[H]
   \centering
@@ -188,7 +132,7 @@ Observing the plot there is no clear trend between performance for any model and
 
 This study ultimately aimed to identify which models were best predictors of microbial growth at different temperatures to inform quantitative biologists, under which conditions should certain models be used for predictions. The Gompertz model was found to be the best predictor of microbial population growth - implying that the additional parameter compared to the Logistic model provides sufficient explanation of the data to justify extra model complexity. However, there was no evidence from figure 2 to suggest that the efficacy of any model is influenced by temperature. Therefore, this report encourages the use of the Gompertz model for predicting microbial populations across a range of temperatures.\\
 
-The trade off between parsimony and complexity is an important dilemma to address in this case. Parsimonous theories advocate for simplicity of explanation \cite{Coelho2019} thus the most straightforward model that adequetly explains the data is best. Simplicity is often favoured as it is more interpretable and overfitting is less likely. In contrast, complex models with more parameters than its competitors (such as Gompertz) explain intricacies in the data, thus providing a better fit. Therefore, metrics that quantify the balance of parsimony and complexity, AICc and BIC, were used in this study to identify the best performing models. The inclusion of $\mathrm{R}^2$ in Table 1 highlights its insuitability and the need for parameter penalisation, as it more strongly favours the cubic and Gompertz models than the other metrics.\\
+The trade off between parsimony and complexity is an important dilemma to address in this case. Parsimonous theories advocate for simplicity of explanation \cite{Coelho2019} thus the most straightforward model that adequetly explains the data is best. Simplicity is often favoured as it is more interpretable and overfitting is less likely. In contrast, complex models with more parameters than its competitors (such as Gompertz) explain intricacies in the data, thus providing a better fit. Therefore, metrics that quantify the balance of parsimony and complexity, AICc and BIC, were used in this study to identify the best performing models. The inclusion of $\mathrm{R}^2$ in Table 1 highlights its insuitability and the need for parameter penalisation, as it expectedly more strongly favoured the cubic and Gompertz models than the other metrics.\\
 
 The results do not align with the expectation that the Logistic model would outperform the Gompertz model at higher temperatures. Reasons for this may be due to the limitations of this study such as the other confounding factors at play. Firstly, the length and extent of different stages of microbial growth will depend on the environmental conditions relative to the conditions that it is best adapted for \cite{Dey2020}. For example, tlag increases for microbes placed in novel environments to allow for time taken to adapt to new conditions \cite{Rolfe2012}. This favours the Gompertz model where a tlag parameter is present. Secondly, growth mediums are known to affect metabolic rates in bacteria \cite{KIM201764}. Kim and Kim (2017) found that microbes grown in nutrient rich media had increased K and Rmax, and decreased tlags than those grown in nutrient poor media. This indicates that the Logistic equation is more suitable for nutrient rich media. To address the limitations of this study, more specified experiments that record enough data for each unique set of conditions would provide a more nuanced understanding of when each model works best.\\
 
@@ -198,7 +142,7 @@ The limited data set also reduces the significance of the findings of the study.
 Finally, whilst $\mathrm{A}_{\textit{W}}$ scores are great for model comparison and assessing relative performance. They do not illustrate how well each model really fits to the data as they are just probabilities. Therefore, their use alongside raw AICc or even $\mathrm{R}^2$ may be necessary. For example, through inspecting each growth curve used in this study (found in the plots directory), there are some instances where a death phase is present. Therefore, regardless of relative performance between Gompertz and Logistic models, both would have failed to capture a major phase of microbial population change.
 
 \section{Conclusion}
-In conclusion the results of this study provides explanation for why the Gompertz model should be used to gain a general idea of microbial population growth. However, it is likely that selecting models that perform best for particular conditions, or using $\mathrm{A}_{\textit{W}}$ is a more reliable method for predicting growth curves and parameters. The study also generated robust parameter estimates for Rmax and K (found in the supplimentary information) that may be used in future studies.
+In conclusion the results of this study provides explanation and evidence for why the Gompertz model should be used to gain a general idea of microbial population growth. Secondly, it is concluded that temperature does not influence model performance. However, it is likely that selecting models that perform best for particular conditions, or using $\mathrm{A}_{\textit{W}}$ is a more reliable method for predicting growth curves and parameters. The study also generated robust parameter estimates for Rmax and K (found in the supplimentary information) that may be used in future studies.
 
   \bibliographystyle{apalike}
   
