@@ -56,7 +56,7 @@ graph_func = function(x,sdf){
     geom_line(data= df1, aes(x = timepoints, y = predicted_logistic, color = "Logistic Fit"), linewidth = 1.5) +
     
     labs(
-      title = paste("Population Growth Curves for ID: ", data_id),
+      title = paste("Population Growth, ID: ", data_id),
       subtitle = paste("Temperature: ", unique(df$Temp),"C", ",", "Population Units: ", unique(df$PopBio_units)),
       x = "Time",
       y = "Population",
@@ -64,7 +64,20 @@ graph_func = function(x,sdf){
     ) +
     
     scale_color_manual(values = c("Cubic Fit" = "blue", "Gompertz Fit" = "red", "Logistic Fit" = "green")) +
-    theme_minimal()+theme(aspect.ratio = 1)
+    theme_minimal()+theme(
+      legend.position = c(0.3,0.75),
+      text = element_text(family = "Times New Roman"),  # Adjust font family and size
+      plot.title = element_text(face = "bold", size = 21),
+      plot.subtitle = element_text(size = 15),# Main title font size
+      axis.title.x = element_text(size = 21),  # X-axis title font size
+      axis.title.y = element_text(size = 21),  # Y-axis title font size
+      axis.text = element_text(size = 17),  # Axis text font size
+      legend.title = element_text(size = 18),  # Legend title font size
+      legend.text = element_text(size = 19),
+      aspect.ratio = 1,
+      legend.key = element_rect(fill = "white", colour = "white"),
+      legend.background = element_rect(fill = "white", colour = "white")
+    )
   
   suppressMessages(ggsave(paste0("../plots", "/plot", data_id, ".pdf"),p)) # suppressmessages speeds it up as prevents printing to console
   
@@ -103,12 +116,12 @@ predicted_logistic <- logistic_model(t = timepoints,
 df1 <- data.frame(timepoints, predicted_gompertz, predicted_logistic, predicted_cubic)
 png("../results/LinearMod.png", height = 3500, width = 3500, res = 500)
 ggplot(data = df, aes(x = Time, y = PopBio)) +
-  geom_point(aes(x = Time, y = PopBio, color = "Observed"), size = 3) +
-  geom_line(data = df1, aes(x = timepoints, y = predicted_cubic, color = "Cubic"), size = 1.5) +
-  geom_line(data = df1, aes(x = timepoints, y = predicted_gompertz, color = "Gompertz"), size = 1.5) +
-  geom_line(data = df1, aes(x = timepoints, y = predicted_logistic, color = "Logistic"), size = 1.5) +
+  geom_point(aes(x = Time, y = PopBio, color = "Observed"), size = 4) +
+  geom_line(data = df1, aes(x = timepoints, y = predicted_cubic, color = "Cubic"), linewidth = 1.7) +
+  geom_line(data = df1, aes(x = timepoints, y = predicted_gompertz, color = "Gompertz"), linewidth = 1.7) +
+  geom_line(data = df1, aes(x = timepoints, y = predicted_logistic, color = "Logistic"), linewidth = 1.7) +
   labs(
-    title = paste("Population Growth Curves for ID: ", data_id),
+    title = paste("Population Growth, ID: ", data_id),
     subtitle = paste("Temperature: ", unique(df$Temp), "C", ",", "Population Units: ", unique(df$PopBio_units)),
     x = "Time",
     y = "Population",
@@ -118,13 +131,14 @@ ggplot(data = df, aes(x = Time, y = PopBio)) +
   theme_minimal() +
   theme(
     legend.position = c(0.3,0.75),
-    text = element_text(family = "Times New Roman", size = 16),  # Adjust font family and size
-    plot.title = element_text(face = "bold", size = 20),  # Main title font size
-    axis.title.x = element_text(size = 18),  # X-axis title font size
-    axis.title.y = element_text(size = 18),  # Y-axis title font size
-    axis.text = element_text(size = 14),  # Axis text font size
-    legend.title = element_text(size = 17),  # Legend title font size
-    legend.text = element_text(size = 16),
+    text = element_text(family = "Times New Roman"),  # Adjust font family and size
+    plot.title = element_text(face = "bold", size = 21),
+    plot.subtitle = element_text(size = 15),# Main title font size
+    axis.title.x = element_text(size = 23),  # X-axis title font size
+    axis.title.y = element_text(size = 23),  # Y-axis title font size
+    axis.text = element_text(size = 17),  # Axis text font size
+    legend.title = element_text(size = 18),  # Legend title font size
+    legend.text = element_text(size = 19),
     aspect.ratio = 1,
     legend.key = element_rect(fill = "white", colour = "white"),
     legend.background = element_rect(fill = "white", colour = "white")
@@ -158,12 +172,12 @@ df2 <- data.frame(timepoints, predicted_gompertzL, predicted_logisticL, predicte
 
 png("../results/LogMod.png",width = 3500, height = 3500, res = 500)
 ggplot(data = df, aes(x = Time, y = log(PopBio))) +
-  geom_point(aes(x = Time, y = log(PopBio), color = "Observed"), size = 3) +
-  geom_line(data = df2, aes(x = timepoints, y = predicted_cubicL, color = "Cubic Fit"), size = 1.5) +
-  geom_line(data = df2, aes(x = timepoints, y = predicted_gompertzL, color = "Gompertz Fit"), size = 1.5) +
-  geom_line(data = df2, aes(x = timepoints, y = predicted_logisticL, color = "Logistic Fit"), size = 1.5) +
+  geom_point(aes(x = Time, y = log(PopBio), color = "Observed"), size = 4) +
+  geom_line(data = df2, aes(x = timepoints, y = predicted_cubicL, color = "Cubic Fit"), linewidth = 1.7) +
+  geom_line(data = df2, aes(x = timepoints, y = predicted_gompertzL, color = "Gompertz Fit"), linewidth = 1.7) +
+  geom_line(data = df2, aes(x = timepoints, y = predicted_logisticL, color = "Logistic Fit"), linewidth = 1.7) +
   labs(
-    title = paste("Population Growth Curves for ID: ", data_id),
+    title = paste("Population Growth, ID: ", data_id),
     subtitle = paste("Temperature: ", unique(df$Temp), "C", ",", "Population Units: ", unique(df$PopBio_units)),
     x = "Time",
     y = "Log Population",
@@ -172,16 +186,20 @@ ggplot(data = df, aes(x = Time, y = log(PopBio))) +
   scale_color_manual(values = c("Cubic Fit" = "blue", "Gompertz Fit" = "red", "Logistic Fit" = "green")) +
   theme_minimal() +
   theme(
-    legend.position = "none",
-    text = element_text(family = "Times New Roman", size = 16),  # Adjust font family and size
-    plot.title = element_text(face = "bold", size = 20),  # Main title font size
-    axis.title.x = element_text(size = 18),  # X-axis title font size
-    axis.title.y = element_text(size = 18),  # Y-axis title font size
-    axis.text = element_text(size = 14),  # Axis text font size
-    legend.title = element_text(size = 17),  # Legend title font size
-    legend.text = element_text(size = 16),
-    aspect.ratio = 1# Legend text font size
-  )
+    legend.position = c(0.3,0.8),
+    text = element_text(family = "Times New Roman"),  # Adjust font family and size
+    plot.title = element_text(face = "bold", size = 21),
+    plot.subtitle = element_text(size = 15),# Main title font size
+    axis.title.x = element_text(size = 23),  # X-axis title font size
+    axis.title.y = element_text(size = 23),  # Y-axis title font size
+    axis.text = element_text(size = 17),  # Axis text font size
+    legend.title = element_text(size = 18),  # Legend title font size
+    legend.text = element_text(size = 19),
+    aspect.ratio = 1,
+    legend.key = element_rect(fill = "white", colour = "white"),
+    legend.background = element_rect(fill = "white", colour = "white")
+  )+labs(color = NULL) +
+  guides(color = guide_legend(title = NULL)) 
 
 graphics.off()
 df <- subset(df, select = c(-Citation,-PopBio_units,-Time_units, -Rep, -ID))
@@ -212,14 +230,14 @@ write.csv(AIC_winner_temp, "../results/AICtemp.csv", row.names = FALSE, quote = 
 
 png("../results/proportionplot.png", height = 2000, width = 4000, res = 500)
 ggplot(data = AIC_winner_temp, aes(x = Temperature)) +
-  geom_line(aes(y = LogisticProp, color = "Logistic"), size = 1.2) +
-  geom_line(aes(y = GompertzProp, color = "Gompertz"), size = 1.2) +
-  geom_line(aes(y = CubicProp, color = "Cubic"), size = 1.2) +
+  geom_line(aes(y = LogisticProp, color = "Logistic"), linewidth = 1.2) +
+  geom_line(aes(y = GompertzProp, color = "Gompertz"), linewidth = 1.2) +
+  geom_line(aes(y = CubicProp, color = "Cubic"), linewidth = 1.2) +
   labs(title = "Proportion of AIC Winners by Temperature",
        x = "Temperature",
        y = "Proportion of Best Fits",
        color = "Model") +
-  scale_color_manual(values = c("Logistic" = "blue", "Gompertz" = "darkgreen", "Cubic" = "red")) +
+  scale_color_manual(values = c("Logistic" = "blue", "Gompertz" = "green", "Cubic" = "red")) +
   theme_minimal() +
   theme(legend.position = c(0.65,0.8),
         legend.title = element_blank(),
