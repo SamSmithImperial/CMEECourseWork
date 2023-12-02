@@ -9,23 +9,31 @@ The project directory is structured as follows within the MiniProject directory:
 
 ├── code
 
-│   ├── **Bibliography.bib** - contains bibliography compiled at the end of the report
-
 │   ├── **DataWrangling.py** - Python script for initial data wrangling and inspection
 
 │   ├── **Fitting_Models.R** - R script for NLLS fitting
 
 │   ├── **Plotting.R** - R script for results anlaysis and plotting
 
-│   ├── **Run_MiniProject.sh** - bash script that executes the python and R script and compiles the write up
+├── report - this subdirectory contains the tex and bib files for the final write up compilation
 
-│   └── **Write_up.tex** - write up in LaTeX format
+│   ├── **Bibliography.bib** - contains bibliography compiled at the end of the report
+
+│   ├── **Run_MiniProject.sh** - bash script that executes the python and R script and compiles the Final report
+
+│   ├── **Write_up.tex** - write up in LaTeX format
+
+│   ├── **SI.tex** - Supplimentary information tex file
+
+│   ├── **SIbibliography.bib** - Supplimentary information bibliography
+
+│   ├── **FinalReport.tex** - tex files that concatenates the SI to the end of the report
 
 ├── data - this subdirectory will be additionally populated with a csv containing the model performance results
 
 │   ├── **LogisticGrowthData.csv** - Original data set
 
-│   └── **LogisticGrowthMetaData.csv** - Meta data set containing information explaining the main dataset
+│   ├── **LogisticGrowthMetaData.csv** - Meta data set containing information explaining the main dataset
 
 ├── plots - this subdirectory will be populated with plots illustrating every single subset.
 
@@ -38,8 +46,8 @@ The project directory is structured as follows within the MiniProject directory:
 ### Instructions
 
 1. First ensure package and language dependancies are up to date and installed.
-2. Change to the MiniProject/code directory and find Run_MiniProject.sh.
-3. Execute **bash Run_MiniProject.sh** in the terminal.
+2. Change to the MiniProject/report directory and find Run_MiniProject.sh.
+3. Execute **bash Run_MiniProject.sh** in the terminal - ignore LaTeX warnings and continue to press enter until the FinalReport.pdf is formed.
 
 ### Programming Language Requirements
 * Python 3.10.12
