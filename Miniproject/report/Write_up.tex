@@ -122,10 +122,11 @@ The number of times each model performed best for a given criteria is shown in t
 Table 1 shows that Gompertz was the best performing model the most number of times for each criteria. The Gompertz model's quality of fit clearly outweighed its penalty for having an extra parameter than the Logistic model for AICc and BIC. Furthermore, the Cubic and Gompertz models clearly outperformed the Logistic according to $\mathrm{R}^2$ , aligning with expectations due to their greater number of parameters. Despite this, the number of $\mathrm{A}_{\textit{W}}$ best fits is fairly similar across all three models. The Gompertz model had a probability of being the best model of more than 0.9 only 59 times out of the 202 growth curves. It is important to note that the columns may not add up to 202 due to 'no clear winner' outcomes where threshold values were not attained.\\
 
 The propotions of best fits for each model were calculated and plotted for each unique temperature value in the dataset. 
-  \begin{center}
-    \includegraphics[scale=0.5]{proportionplot.png} 
-    \caption{Line graph showing best model proportions against temperature}
-  \end{center}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{proportionplot.png} 
+  \caption{Line graph showing best model proportions against temperature}
+\end{figure}
 Observing the plot there is no clear trend between performance for any model and temperature. Whilst there are temperatures which certain models perform best at, for example cubic at 16 degrees, drawing definitive trends is challenging due to small sample sizes for each temperature.
 
 \section{Discussion}
