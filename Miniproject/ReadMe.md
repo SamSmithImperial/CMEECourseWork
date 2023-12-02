@@ -47,7 +47,7 @@ The project directory is structured as follows within the MiniProject directory:
 
 1. First ensure package and language dependancies are up to date and installed.
 2. Change to the MiniProject/report directory and find Run_MiniProject.sh.
-3. Execute **bash Run_MiniProject.sh** in the terminal - ignore LaTeX warnings and continue to press enter until the FinalReport.pdf is formed.
+3. Execute **bash Run_MiniProject.sh** in the terminal - ignore LaTeX warnings.
 
 ### Programming Language Requirements
 * Python 3.10.12
