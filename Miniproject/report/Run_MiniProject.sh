@@ -35,4 +35,4 @@ pdflatex FinalReport.tex
 rm -f Write_up.pdf SI.pdf
 rm -f *.aux *.log *.out *.fls *.sum *.bbl *.blg 
 
-echo "Script execution complete. Please find Write_up.pdf in the code directory"
+echo "Script execution complete. Please find FinalReport.pdf in the report directory"
