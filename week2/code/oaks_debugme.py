@@ -30,14 +30,17 @@ def main(argv):
     taxa = csv.reader(f)
     csvwrite = csv.writer(g)
     oaks = set()
+    is_header = True
     for row in taxa:
+        if is_header:
+                is_header = False
+                continue
         print(row)
         print ("The genus is: ") 
         print(row[0] + '\n')
         if is_an_oak(row[0]):
             print('FOUND AN OAK!\n')
             csvwrite.writerow([row[0], row[1]])    
-
     return 0
     
 
