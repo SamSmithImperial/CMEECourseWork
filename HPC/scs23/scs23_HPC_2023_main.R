@@ -21,7 +21,7 @@ username <- "scs23"
 
 # Question 1
 species_richness <- function(community){
-  unique <- unique(community)
+  unique <- unique(community) # number of unique values
   SR <- length(unique)
   return(SR)
 }
@@ -74,14 +74,14 @@ neutral_time_series <- function(community,duration)  {
   SR <- length(unique(community)) # initial species richness
   for (i in seq_len(duration)){
     community <- neutral_generation(community)
-    SR <- c(SR,length(unique(community)))
+    SR <- c(SR,length(unique(community))) # Species Richness is the Length of unique values
   }
   return(SR)
 }
 
   # Question 8
 question_8 <- function() {
-  community <- init_community_max(100)
+  community <- init_community_max(100) # Community with Maximum Species Richness
   timeseries <- seq(0,200,1)
   SRs <- neutral_time_series(community = community, duration = 200)
   df <- data.frame(timeseries, SRs)
@@ -96,7 +96,7 @@ question_8 <- function() {
 # Question 9
 neutral_step_speciation <- function(community,speciation_rate)  {
   RandomNumber <- runif(1)
-  if (RandomNumber>speciation_rate){
+  if (RandomNumber>speciation_rate){ # If the random number (between 0 and 1) is more than the speciation rate than there is no speciation event
     return(neutral_step(community))
   } else {
     maxvalue <- length(community)
@@ -135,6 +135,7 @@ question_12 <- function()  {
   timeseries <- seq(1,201,1)
   SRsMax <- neutral_time_series_speciation(community = communitymax, duration = 200, speciation_rate = 0.1)
   SRsMin <- neutral_time_series_speciation(community = communitymin, duration = 200, speciation_rate = 0.1)
+  
   df <- data.frame(timeseries, SRsMax, SRsMin)
   png(filename="Plots/question_12", width = 600, height = 400)
   ggplot(df, aes(timeseries)) +
@@ -168,15 +169,12 @@ species_abundance <- function(community)  {
   return(abundances)
 }
 
-
-
 # Question 14
 octaves <- function(abundance_vector) {
   log_vector_floored <- floor(log2(abundance_vector))+1
   tabulation <- tabulate(log_vector_floored)
   return(tabulation)
 }
-
 
 # Question 15
 sum_vect <- function(x, y) {
@@ -188,7 +186,7 @@ sum_vect <- function(x, y) {
 
 # Question 16 
 question_16 <- function() {
-  sum1 <- vector()
+  sum1 <- vector() # initialise empty vectors 
   sum2 <- vector()
   communitymax <- init_community_max(100)
   communitymin <- init_community_min(100)
@@ -202,7 +200,7 @@ question_16 <- function() {
       sum1 <- sum_vect(sum1,k)
     }
   } 
-  dataframe1 <- data.frame(sum1, c("1","2-3","4-7","8-15","16-31", "32-63"))
+  dataframe1 <- data.frame(sum1, c("1","2-3","4-7","8-15","16-31", "32-63")) # make dataframe including octave labels before plotting
   colnames(dataframe1)[2] <- "octaves"
 
   for (i in seq_len(duration)) {
@@ -225,7 +223,7 @@ question_16 <- function() {
   dev.off()
   
   png(filename="Plots/question_16_min", width = 600, height = 400)
-  ggplot(data = dataframe2, aes(x = reorder(octaves, -sum2/100), y = sum2/100)) +
+  ggplot(data = dataframe2, aes(x = reorder(octaves, -sum2/100), y = sum2/100)) + # reorder function is used here to plot bars in descending order. which also corresponds to increasing octave size
     geom_bar(stat = "identity", fill = "skyblue") +
     labs(x = "Abundance", y = "Mean Number of Species", title = "Mean Species Abundance for Each Octave")+theme_classic()+theme(aspect.ratio = 1)
   
@@ -244,13 +242,13 @@ neutral_cluster_run <- function(speciation_rate, size, wall_time, interval_rich,
   abundance_list <- list()
   
   while (proc.time()[3] - t1 < wall_time*60) {
-    i <- i + 1 
+    i <- i + 1 # this code is necessary for a while loop as i is not defined as in for loops
     community <- neutral_generation_speciation(community, speciation_rate)
     if (i %% interval_rich == 0 & i < burn_in_generations) {
       SR <- species_richness(community)
       time_series <- c(time_series, SR)
     } 
-    if (i %% interval_oct == 0) {
+    if (i %% interval_oct == 0) { # modulos are used so that if modulo zero is equal to zero then i must be a multiple of the interval_oct value
       x <- species_abundance(community)
       abundance_list <- c(abundance_list, list(octaves(x)))
     }
@@ -290,8 +288,11 @@ process_neutral_cluster_results <- function() {
   for (i in 1:100){
     load(paste0("HPC_CLUSTER_",i,".rda"))
     if (size == 500) {
+      
+      # burn in generations is divided by interval oct to work out how many indexes to remove before making the list of abundances
+      
       indexs_to_remove <- burn_in_generations/interval_oct 
-      abundance_list <- abundance_list[-seq_len(indexs_to_remove)]
+      abundance_list <- abundance_list[-seq_len(indexs_to_remove)] # remove burn in generations
       list500 <- c(list500, abundance_list)
         for (j in 1:length(list500)){
           octave <- list500[[j]]
@@ -327,26 +328,26 @@ process_neutral_cluster_results <- function() {
     }
   }
   
-  s500 <- s500/(length(list500))
+  s500 <- s500/(length(list500)) # make averages by dividing by the length of the lists
   s1000 <- s1000/(length(list1000))
   s2500 <- s2500/(length(list2500))
   s5000 <- s5000/(length(list5000))
 
   combined_results <- list(s500, s1000, s2500, s5000)
-  save(combined_results, file = "Q20.rda")
+  save(combined_results, file = "Q20.rda") # save to rda file
   
 }
 
 plot_neutral_cluster_results <- function(){
   
-  load("output_files/Q20.rda")
+  load("output_files/Q20.rda") # reload rda file previously saved
   s500 <- combined_results[[1]]
   s1000 <- combined_results[[2]]
   s2500 <- combined_results[[3]]
   s5000 <- combined_results[[4]]
   
-  octaves1 <- c("1","2-3","4-7","8-15","16-31","32-63","64-127","128-255","256-511")
-  df1 <- data.frame(s500,octaves1)
+  octaves1 <- c("1","2-3","4-7","8-15","16-31","32-63","64-127","128-255","256-511") # octave x axis values
+  df1 <- data.frame(s500,octaves1) # make data frame for easy plotting in ggplot
   p1 <- ggplot(df1, aes(x = reorder(octaves1,-s500), y = s500)) +
     geom_bar(stat = "identity", fill = "lightgreen") +
     labs(title = "Community Size: 500",
@@ -373,8 +374,7 @@ plot_neutral_cluster_results <- function(){
     theme_classic()+theme(aspect.ratio = 0.65)+theme(axis.text.x = element_text(angle = 35, hjust = 1))
   
   
-  octaves4 <- c("1","2-3","4-7","8-15","16-31","32-63","64-127","128-255","256-511","512-1023","1024-2047")
-  df4 <- data.frame(s5000,octaves4)
+  df4 <- data.frame(s5000,octaves3)
   p4 <- ggplot(df4, aes(x = reorder(octaves4,-s5000), y = s5000)) +
     geom_bar(stat = "identity", fill = "pink") +
     labs(title = "Community Size: 5000",
@@ -384,7 +384,7 @@ plot_neutral_cluster_results <- function(){
   
   
   png(filename="Plots/plot_neutral_cluster_results", width = 600, height = 400)
-  grid.arrange(p1,p2,p3,p4)
+  grid.arrange(p1,p2,p3,p4) # grid arrange function make a panel with 4 plots
   Sys.sleep(0.1)
   dev.off()
   
@@ -404,7 +404,7 @@ state_initialise_adult <- function(num_stages,initial_size){
 state_initialise_spread <- function(num_stages,initial_size){
   state_vector2 <- rep(floor(initial_size/num_stages), num_stages)
   remaining <- initial_size %% num_stages
-  if (remaining >= 1){
+  if (remaining >= 1){ # only add 1 remaining values if there are any!!
   state_vector2[1:remaining] <- state_vector2[1:remaining]+1
   }
   return(state_vector2)
@@ -412,7 +412,7 @@ state_initialise_spread <- function(num_stages,initial_size){
 
 # Question 23
 deterministic_step <- function(state,projection_matrix){
-  new_state <- projection_matrix %*% state 
+  new_state <- projection_matrix %*% state # %*% is used for matrix multiplication
   return(new_state)
 }
 
@@ -449,7 +449,8 @@ question_25 <- function(){
   EqualPop <- deterministic_simulation(state_initialise_spread(4,100), projection_matrix, 24)
   timepoints <- seq(0,24,1)
   df <- data.frame(timepoints, AdultPop, EqualPop)
-  david <- ggplot(data = df, aes(x = timepoints)) +
+  
+  plot25 <- ggplot(data = df, aes(x = timepoints)) +
     geom_line(aes(y = AdultPop, color = "Adult"), size = 1.2) +
     geom_line(aes(y = EqualPop, color = "Equal"), size = 1.2) +
    theme_classic() +
@@ -459,7 +460,7 @@ question_25 <- function(){
          color = "")+
     theme(legend.position = c(0.2, 0.8), aspect.ratio = 1)
   png(filename="Plots/question_25", width = 600, height = 400)
-  david
+  plot25
   Sys.sleep(0.1)
   dev.off()
   
@@ -471,11 +472,11 @@ multinomial <- function(pool,probs) {
   if (sum(probs) > 1) {
     stop("Sum of probabilities must be less than 1.")
   }
-  death_prob <- 1 - sum(probs)
+  death_prob <- 1 - sum(probs) # probability of death is the 1 minus the sum of all the probabilities of not dying!
   probs <- c(probs, death_prob)
   outcome <- rmultinom(n = 1, size = pool, prob = probs)
-  outcome <- as.vector(outcome)
-  outcome <- outcome[-length(outcome)]
+  outcome <- as.vector(outcome) # vectorize outcome
+  outcome <- outcome[-length(outcome)] # remove final index
   return(outcome)
 }
 
@@ -483,12 +484,12 @@ multinomial <- function(pool,probs) {
 
 # Question 27
 survival_maturation <- function(state,growth_matrix) {
-  new_state <- rep(0,length(state))
+  new_state <- rep(0,length(state)) # make a vector of just zeros with the same length as the input state
   for (i in 1:length(state)) {
     num_ind <- state[i]
     probabilities <- growth_matrix[ ,i]
     new_state1 <- multinomial(num_ind, probabilities)
-    new_state <- sum_vect(new_state, new_state1)
+    new_state <- sum_vect(new_state, new_state1) # add the zero vector ta make sure that the new_state is the same length as the input state
   }
   return(new_state)
 }
@@ -496,13 +497,10 @@ survival_maturation <- function(state,growth_matrix) {
 
 # Question 28
 random_draw <- function(probability_distribution) {
-  vectorr <- 1:length(probability_distribution)
-  draw <- sample(vectorr, size = 1, prob = probability_distribution)
+  vector <- 1:length(probability_distribution)
+  draw <- sample(vector, size = 1, prob = probability_distribution)
   return(draw)
 }
-
-
-
 
 # Question 29
 stochastic_recruitment <- function(reproduction_matrix,clutch_distribution){
@@ -534,7 +532,7 @@ offspring_calc <- function(state,clutch_distribution,recruitment_probability){
 stochastic_step <- function(state,growth_matrix,reproduction_matrix,clutch_distribution,recruitment_probability){
   new_state <- survival_maturation(state, growth_matrix)
   total_offspring <- offspring_calc(new_state, clutch_distribution, recruitment_probability)
-  new_state <- sum_vect(as.vector(total_offspring), new_state)
+  new_state <- sum_vect(as.vector(total_offspring), new_state) # add the total offspring as a vector of length one to the first stage of the new_state
   return(new_state)
 }
 
@@ -547,13 +545,13 @@ stochastic_simulation <- function(initial_state,growth_matrix,reproduction_matri
   population_sizes <- c(sum(initial_state))
   zeros <- rep(0, (simulation_length+1))
   for (i in 1:simulation_length) {
-    if (sum(state) == 0) {
+    if (sum(state) == 0) { # if the population becomes extinct then stop the simulation
       break 
     }
     state <- stochastic_step(state, growth_matrix, reproduction_matrix, clutch_distribution, recruitment_P)
     population_sizes <- c(population_sizes, sum(state))
   }
-  population_sizes <- sum_vect(population_sizes, zeros)
+  population_sizes <- sum_vect(population_sizes, zeros) # ensure that all populations that went extinct have the same pop size length as the non extinct populations. ie. just add zeros to extinct populations so all vectors are the same length
   return(population_sizes)
 }
 
@@ -609,7 +607,7 @@ question_33 <- function(){
 # Question 36
 question_36 <- function(){
   
-  RAB <- list() 
+  RAB <- list() # initialise empty lists
   RAS <- list()
   RSB <- list()
   RSS <- list() 
@@ -631,7 +629,9 @@ question_36 <- function(){
     RSS <- c(RSS, list(results_spread_small))
   }
   
-  RABB <- unlist(RAB)
+  # unlist them and then seperatee into chunks of the same length so that there is one list rather than a list of lists!
+  
+  RABB <- unlist(RAB) 
   RASS <- unlist(RAS)
   RSBB <- unlist(RSB)
   RSSS <- unlist(RSS)
@@ -644,7 +644,9 @@ question_36 <- function(){
   list_of_vectors_RSB <- split(RSBB, rep(1:num_chunks, each = chunk_size, length.out = length(RSBB)))
   list_of_vectors_RSS <- split(RSSS, rep(1:num_chunks, each = chunk_size, length.out = length(RSSS)))
   
-  contains_zero_RAB <- sapply(list_of_vectors_RAB, function(x) any(x == 0)) 
+  # if a population contains a zero then an extinction event has certainly happened!
+  
+  contains_zero_RAB <- sapply(list_of_vectors_RAB, function(x) any(x == 0)) # which populations contain a zero
   contains_zero_RAS <- sapply(list_of_vectors_RAS, function(x) any(x == 0)) 
   contains_zero_RSB <- sapply(list_of_vectors_RSB, function(x) any(x == 0)) 
   contains_zero_RSS <- sapply(list_of_vectors_RSS, function(x) any(x == 0)) 
@@ -687,6 +689,8 @@ question_37 <- function(){
       average_RSS <- sum_vect(average_RSS, RSS[[i]][[j]])
   }
 
+  # 3750 is the number of simulations for each community size
+  
   average_RSB <- average_RSB/3750
   average_RSS <- average_RSS/3750
   
