@@ -86,7 +86,7 @@ question_8 <- function() {
   SRs <- neutral_time_series(community = community, duration = 200)
   df <- data.frame(timeseries, SRs)
   png(filename="Plots/question_8", width = 600, height = 400)
-  ggplot(df,aes(timeseries, SRs))+geom_line()+theme_classic()+theme(aspect.ratio = 1)+xlab("Number of Generations")+ylab("Species Richness")+ggtitle("Species Richness over 200 generations")
+  ggplot(df,aes(timeseries, SRs))+geom_line()+theme_classic()+theme(aspect.ratio = 1)+xlab("Number of Generations")+ylab("Species Richness")+ggtitle("Species Richness over 200 generations of a Neutral Model Simulation")
   Sys.sleep(0.1)
   dev.off()
   
@@ -458,7 +458,7 @@ question_25 <- function(){
          x = "Generations",
          y = "Population Size",
          color = "")+
-    theme(legend.position = c(0.2, 0.8), aspect.ratio = 1)
+    theme(legend.position = c(0.2, 0.8), aspect.ratio = 1, legend.text = element_text(size = 15))
   png(filename="Plots/question_25", width = 600, height = 400)
   plot25
   Sys.sleep(0.1)
@@ -590,7 +590,7 @@ question_33 <- function(){
     theme(aspect.ratio = 1) +
     xlab("Simulation Length") +
     ylab("Population Size") +
-    labs(title = "Population Size Over Simulation Length") +
+    labs(title = "Population Size Over 25 Stochastic Simulations") +
     scale_color_manual(values = c("blue", "red"),
                        labels = c("Adult Points", "Equal Points"))+
     labs(color = NULL)+theme(legend.position = c(0.2,0.9))
@@ -663,7 +663,7 @@ question_36 <- function(){
   png(filename="Plots/question_36", width = 600, height = 400)
   ggplot(data, aes(x = Category, y = Proportion, fill = Category)) +
     geom_bar(stat = "identity") +
-    labs(title = "Extinction Proportions per Simulation",
+    labs(title = "Extinction Likelihood per Stochastic Simulation for each Population",
          x = "Population",
          y = "Proportion") +
     theme_classic()+theme(aspect.ratio = 1)+theme(axis.text.x = element_text(angle = 35, hjust = 1), legend.position = "none")
@@ -712,7 +712,7 @@ question_37 <- function(){
     geom_line(aes(x = timepoints, y = plottingvectorRSB, color = "100"), size = 1.1) +
     geom_line(aes(x = timepoints, y = plottingvectorRSS, color = "10"), size = 1.1) +
     geom_hline(yintercept = 1, linetype = "dashed", color = "black") +
-    labs(title = "Deviation Ratio between Average Stochastic and Deterministic Model",
+    labs(title = "Deviation Ratio of mean Stochastic and Deterministic Model Population Sizes",
          x = "Number of Generations",
          y = "Stochastic Population / Deterministic Population",
          color = "Initial Population Size") +
@@ -727,7 +727,7 @@ question_37 <- function(){
   Sys.sleep(0.1)
   dev.off()
   
-  return("The initial condition that is most appropriate to approximate the 'average' behaviour of this stochastic system with a deterministic model would be shown my the line that remains closest to the dashed line on the graph. The line that is overall closest to y=1 resembles the line which deviates less from the deterministic model. It seems that over time both population sizes increasingly deviate from the deterministic model. This is hard to explain in biological terms as one would expect deviations to decrease over time for both models and therefore, i would expect both lines to converge to y=1. I expect deviations to decrease over time because as the populations get larger they are less affected by the stochasticity and therefore would be more easily predicted by the deterministic model.")
+  return("The initial condition that is most appropriate to approximate the 'average' behaviour of this stochastic system with a deterministic model would be shown by the line that remains closest to the dashed line on the graph. The line that is overall closest to y=1 resembles the line which deviates less from the deterministic model. It seems that over time both population sizes increasingly deviate from the deterministic model. This is hard to explain in biological terms as one would expect deviations to decrease over time for both models and therefore, i would expect both lines to converge to y=1. I expect deviations to decrease over time because as the populations get larger they are less affected by the stochasticity and therefore would be more easily predicted by the deterministic model. It seems in this case that a deterministic model would better predict a small initial population size (red line) as it is slightly closer overall the y=1.")
 }
 
 # Challenge questions - these are optional, substantially harder, and a maximum
