@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+\usepackage{pgfgantt}
+\usepackage{setspace}
+\title{The Phylogeny of Staphylinidae (Rove Beetles) from Whole Mitochondrial Genomes}
+\begin{document}
+\onehalfspacing
+\begin{titlepage}
+    \maketitle
+    \begin{center}
+        Samuel Smith \\ Imperial College London \\ scs23@imperial.ac.uk
+    \end{center}
+    \begin{center}
+        Superviser: \\ Alfried Vogler \\ Imperial College London \\ a.vogler@imperial.ac.uk
+    \end{center}
+\end{titlepage}
+
+
+    \section{Keywords}
+    Phylogeny, Rove Beetles, Staphylinidae, Diversification, Phylogenetic Tree, Mito-Genomes, Basal Relationships
+    \section{Introduction}
+    Staphylinidae (Rove Beetles) is the most species rich family of the diverse Coleopteran order. Staphylinidae consists of many subfamilies including the highly diverse Staphylininae, Paederinae, and Aleocharinae. Molecular phylogenetic studies of the family Staphylinidae have continued throughout the 21st Century, with the most accurate and successfull analysis' making use of Bayesian and Maximum Likelihood methods for tree building \cite{Gusarov2018}. The development of modern sequencing techniques and an increased abundance of genetic data is a burden on traditional phylogenetic methods lacking computational power to process many and large sequences. Nuclear or mitogenomes can be used in this context however, mitogenomes are useful due to their relatively high evolutionary rate and their lack of genetic recombination - thus numerous phylogenetic signals. 
+
+    \section{Methods}
+    This project aims to construct an accurate phylogenetic tree using the mitogenomes of 1000 Staphylinidae species from around the world using clustering (machine learning) methods to create a backbone, reference tree which can consequently be refined and added to, using traditional phylogenetic methods. k-means clustering can be applied to sequence similarity metrics (based on pairwise sequence comparisons, i.e. Damerau-Levenshtein Distance) to identify `clusters' of similar species. Iterative k-means clustering will be implemented to determine the most suitable clusters according to a silhoette coefficient score. Consequently, the `centroid' species will be chosen from each cluster alongside the reference species, for traditional phylogenetic tree construction. Once this backbone is made, the remaining species in each cluster can be added to thier respecitve centroid to refine the tree. The tree will then be used to place existing (meta)barcode sequences for a phylogenetic framework and reference system. All methods likely to be carried out using Python and R.
+    \section{Timeline}
+    \begin{center}
+    \begin{ganttchart} [
+        hgrid,
+        vgrid,
+        time slot format=isodate-yearmonth,
+        time slot unit=month,
+        x unit=2.5cm
+        ] {2024-04}{2024-08}
+        \gantttitle{MSc Project Timeline}{5} \\
+        \gantttitlecalendar{month=shortname} \\
+        \ganttbar{Lit Review \& Intro}{2024-04}{2024-05} \\
+        \ganttbar{Sequence Clustering}{2024-05}{2024-05} \\
+        \ganttbar{Tree Completion}{2024-06}{2024-06} \\
+        \ganttbar{Interpret tree}{2024-07}{2024-07} \\
+        \ganttbar{Write-up}{2024-07}{2024-08}
+        
+    \end{ganttchart}
+    \end{center}
+    \section{Budget}
+    \textbf{1TB Hard Drive} for ~\textbf{£100} required for storing large amounts of mitogenomic and data. \textbf{HPC Computing Time} may be required for tree building or machine learning tasks but cost unknown. \textbf{Travel} fee (\textbf{c£50}) for commuting to the Natural History Museum via Transport for London.
+
+  \bibliographystyle{plain}
+  
+  \bibliography{biblio}
+
+\end{document}
