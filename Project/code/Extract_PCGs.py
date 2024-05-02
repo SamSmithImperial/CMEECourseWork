@@ -3,6 +3,7 @@ import pandas as pd
 from Bio import pairwise2
 from Bio.Align import PairwiseAligner
 from Bio.Seq import Seq
+from Bio import SeqIO
 
 ####################################################
 ### Extract Sequences and PCG from Genbank Files ###
@@ -49,7 +50,6 @@ def create_dataframe(directory):
 
     return df
 
-directory = '../data/StaphyMGs' # Directory containing sequences
+directory = '../data/All_MGs' # Directory containing sequences
 df = create_dataframe(directory)
 df.to_csv("../data/sequences.csv", index=False) 
-
