@@ -81,7 +81,7 @@ The project directory is structured as follows:
 
 1. Firstly ensure package and language dependancies are installed and up to date.
 2. Change directory to Project/code for the execution of run_clustering.sh
-3. Execute bash run_clustering.sh in the terminal whilst ignoring LaTeX warnings
+3. Execute bash run_clustering.sh in the terminal whilst ignoring LaTeX warnings. NB: only authorized personal with NHM database login details will be able to execute this pipeline.
 
 #### Program Version Requirements
 
