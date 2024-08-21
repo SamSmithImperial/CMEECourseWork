@@ -91,18 +91,18 @@ The project directory is structured as follows:
 #### Packages
 
 **R**
-ggplot2 3.4.4
-parallel 4.3.3
-flexclust 1.4.2
-cluster 2.1.6
-tidyr 1.3.1
-dplyr 1.1.4
+* ggplot2 3.4.4
+* parallel 4.3.3
+* flexclust 1.4.2
+* cluster 2.1.6
+* tidyr 1.3.1
+* dplyr 1.1.4
 
 **ipython3**
-csv 
-pandas
-Bio
-os
+* csv 
+* pandas
+* Bio
+* os
 
 
 
