@@ -19,11 +19,7 @@ The project directory is structured as follows:
 
 │   │   │   └── **SigClust_centers.R** - R script for identifying the cluster centers of the SigClust clusters
 
-|   |   |
-
 │   │   ├── DataPrep - This folder is a collection of scripts in both R and python used to clean etc. the data set
-
-|   |   |
 
 │   │   ├── Plotting - This folder has scripts aptly named for their role in final report plots
 
@@ -35,19 +31,14 @@ The project directory is structured as follows:
 
 │   │   │   └── **Line_Graphs.R**
 
-|   |   |
-
 │   │   └── RunProject - These shell scripts execute different parts of the products
 
 │   │       ├── **run_clustering.sh**
 
 │   │       └── **run_trees.sh**
 
-|   |   
-
 │   └── SigClust 
 
-|
 ├── data
 
 │   ├── MitoGenomes
@@ -58,21 +49,13 @@ The project directory is structured as follows:
 
 │   │   └── example
 
-|   |
-
 │   ├── Other
 
 │   │   └── ColeopteranSite100.csv
 
-|   |
-
 │   ├── PairwiseMatrices
 
-|   |
-
 │   ├── SigClusters
-
-|   |
 
 │   └── TreeBuilding
 
@@ -84,16 +67,11 @@ The project directory is structured as follows:
 
 │       ├── 4_nt_aln
 
-|
-
 ├── plots
 
 └── Report
-
     ├── Bibliography.bib
-    
     ├── CompileLaTeX.sh
-    
     └── Write_up.tex
 
 #### Instructions
