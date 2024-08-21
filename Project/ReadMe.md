@@ -8,9 +8,13 @@ This is an exploratory study investigating the use of kmeans clustering for iden
 The project directory is structured as follows:
 
 ├── code
+
 │   ├── Scripts
+
 │   │   ├── Analysis
+
 │   │   │   ├── **Kmeans.R** - R script for executing kmeans on entire pairwise matrix
+
 │   │   │   ├── **Pairwise_Matrix.R** - R script for computing the distance matrix used in multiple stages of the analysis
 │   │   │   └── **SigClust_centers.R** - R script for identifying the cluster centers of the SigClust clusters
 |   |   |
