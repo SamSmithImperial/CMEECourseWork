@@ -16,45 +16,84 @@ The project directory is structured as follows:
 │   │   │   ├── **Kmeans.R** - R script for executing kmeans on entire pairwise matrix
 
 │   │   │   ├── **Pairwise_Matrix.R** - R script for computing the distance matrix used in multiple stages of the analysis
+
 │   │   │   └── **SigClust_centers.R** - R script for identifying the cluster centers of the SigClust clusters
+
 |   |   |
+
 │   │   ├── DataPrep - This folder is a collection of scripts in both R and python used to clean etc. the data set
+
 |   |   |
+
 │   │   ├── Plotting - This folder has scripts aptly named for their role in final report plots
+
 │   │   │   ├── **Bar_Charts.R** 
+
 │   │   │   ├── **Density_Plots.R**
+
 │   │   │   ├── **Flow_Diagram.R**
+
 │   │   │   └── **Line_Graphs.R**
+
 |   |   |
+
 │   │   └── RunProject - These shell scripts execute different parts of the products
+
 │   │       ├── **run_clustering.sh**
+
 │   │       └── **run_trees.sh**
+
 |   |   
+
 │   └── SigClust 
+
 |
 ├── data
+
 │   ├── MitoGenomes
+
 │   │   ├── 320_MGs
+
 │   │   ├── Complete
+
 │   │   └── example
+
 |   |
+
 │   ├── Other
+
 │   │   └── ColeopteranSite100.csv
+
 |   |
+
 │   ├── PairwiseMatrices
+
 |   |
+
 │   ├── SigClusters
+
 |   |
+
 │   └── TreeBuilding
+
 │       ├── 1_nt_raw
+
 │       ├── 2_aa_raw
+
 │       ├── 3_aa_aln
+
 │       ├── 4_nt_aln
+
 |
+
 ├── plots
+
 └── Report
+
     ├── Bibliography.bib
+    
     ├── CompileLaTeX.sh
+    
     └── Write_up.tex
 
 #### Instructions
