@@ -70,11 +70,12 @@ The project directory is structured as follows:
 ├── plots
 
 └── Report
-    ├── Bibliography.bib
+
+|   ├── Bibliography.bib
     
-    ├── CompileLaTeX.sh
+|   ├── CompileLaTeX.sh
     
-    └── Write_up.tex
+|   └── Write_up.tex
 
 #### Instructions
 
