@@ -71,7 +71,9 @@ The project directory is structured as follows:
 
 └── Report
     ├── Bibliography.bib
+    
     ├── CompileLaTeX.sh
+    
     └── Write_up.tex
 
 #### Instructions
