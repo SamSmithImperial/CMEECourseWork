@@ -1,4 +1,4 @@
-# CMEE Master's Dissertation ReadME
+# CMEE Master's Dissertation ReadMe
 ## Phylogenetic Backbone Reconstruction using Kmeans Clustering on Coleopteran Mitogenomes
 
 #### Description
